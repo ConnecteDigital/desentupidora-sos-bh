@@ -13,7 +13,7 @@ export const site = {
   phoneDigits: PHONE_DIGITS,
   // Exibição com o 0 na frente, como o cliente pediu: 0 31 99922-1810
   phoneDisplay: `0 ${PHONE_DIGITS.slice(2, 4)} ${PHONE_DIGITS.slice(4, 9)}-${PHONE_DIGITS.slice(9)}`,
-  tel: `tel:+${PHONE_DIGITS}`,
+  tel: `tel:${PHONE_DIGITS}`,
   // PROVISÓRIO: confirmar com o cliente o tempo real de chegada
   arrivalMinutes: 30,
   description:
@@ -26,9 +26,3 @@ export const DEFAULT_WHATSAPP_MESSAGE =
 export function whatsappUrl(message: string = DEFAULT_WHATSAPP_MESSAGE) {
   return `https://api.whatsapp.com/send?phone=${site.phoneDigits}&text=${encodeURIComponent(message)}`;
 }
-
-// Tag do Google (gtag.js). Deixe vazio até o cliente mandar o ID (ex.: 'AW-123456789').
-export const googleTagId = '';
-
-// Contêiner do Google Tag Manager (ex.: 'GTM-XXXXXXX'). Vazio = não instala.
-export const gtmId = '';
