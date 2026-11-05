@@ -1,7 +1,7 @@
 // Dados centrais da empresa. Altere aqui e o site inteiro é atualizado.
 
 // Formato: 55 + DDD + número, só dígitos
-const PHONE_DIGITS = '5531999221810';
+const PHONE_DIGITS = '031999221810';
 
 export const site = {
   name: 'Desentupidora SOS BH',
