@@ -1,19 +1,19 @@
 import type { ImageMetadata } from 'astro';
 
-// Fotos reais de serviços feitos, uma por serviço (src/assets/fotos/<slug>.jpg).
+// Fotos dos serviços, uma por serviço (src/assets/fotos/<slug>.jpg).
 // Os originais ficam em fotos/<slug>/ na raiz do repositório.
 // Enquanto um serviço não tiver foto, o site mostra o ícone no lugar
-// e a galeria "Trabalhos realizados" fica escondida.
+// e a galeria "Veja também" fica escondida.
 const arquivos = import.meta.glob<{ default: ImageMetadata }>('../assets/fotos/*.jpg', { eager: true });
 
 const alts: Record<string, string> = {
-  'desentupimento-de-esgoto': 'Técnico da Desentupidora SOS BH desentupindo rede de esgoto com máquina',
-  'desentupimento-de-pia': 'Desentupimento de pia de cozinha em Belo Horizonte',
-  'desentupimento-de-vaso-sanitario': 'Desentupimento de vaso sanitário em banheiro residencial',
-  'desentupimento-de-ralo': 'Desentupimento de ralo e caixa sifonada',
-  'limpeza-de-caixa-de-gordura': 'Limpeza de caixa de gordura',
-  // fotos/geral/: equipe, veículo (usada no topo da home e em "por que nós")
-  equipe: 'Equipe da Desentupidora SOS BH',
+  'desentupimento-de-esgoto': 'Técnico desentupindo rede de esgoto com máquina de cabo rotativo',
+  'desentupimento-de-pia': 'Técnico desentupindo a tubulação embaixo da pia com máquina',
+  'desentupimento-de-vaso-sanitario': 'Técnico desentupindo vaso sanitário com máquina de cabo flexível',
+  'desentupimento-de-ralo': 'Técnico desentupindo ralo com máquina de cabo rotativo',
+  'limpeza-de-caixa-de-gordura': 'Técnico fazendo a limpeza de caixa de gordura com mangueira de sucção',
+  // fotos/geral/: imagem do topo da home e de "por que nós"
+  equipe: 'Técnicos de desentupimento trabalhando em esgoto, vaso sanitário e caixa de gordura',
 };
 
 export interface Foto {
@@ -24,7 +24,7 @@ export interface Foto {
 export function fotoDoServico(slug: string): Foto | undefined {
   const mod = arquivos[`../assets/fotos/${slug}.jpg`];
   if (!mod) return undefined;
-  return { src: mod.default, alt: alts[slug] ?? 'Serviço realizado pela Desentupidora SOS BH' };
+  return { src: mod.default, alt: alts[slug] ?? 'Serviço de desentupimento' };
 }
 
 export function temFotos() {
