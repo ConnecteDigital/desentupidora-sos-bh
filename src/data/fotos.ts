@@ -13,7 +13,7 @@ const alts: Record<string, string> = {
   'desentupimento-de-ralo': 'Técnico desentupindo ralo com máquina de cabo rotativo',
   'limpeza-de-caixa-de-gordura': 'Técnico fazendo a limpeza de caixa de gordura com mangueira de sucção',
   // fotos/geral/: imagem do topo da home e de "por que nós"
-  equipe: 'Técnicos de desentupimento trabalhando em esgoto, vaso sanitário e caixa de gordura',
+  equipe: 'Técnico desentupindo ralo de piso com máquina de cabo rotativo',
 };
 
 export interface Foto {

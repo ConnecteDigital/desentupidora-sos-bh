@@ -389,7 +389,7 @@ body:has(.nav-mobile[open]) .float-cta { display: none; }
 
 /* topo da home: foto de fundo escurecida e conteúdo centralizado */
 .hero-home { isolation: isolate; min-height: min(88vh, 760px); display: flex; align-items: center; }
-.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; z-index: -2; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; z-index: -2; }
 .hero-home::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   background:

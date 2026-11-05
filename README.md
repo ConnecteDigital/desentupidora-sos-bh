@@ -30,4 +30,3 @@ Cada serviço vira `/servicos/<slug>/`, cada cidade vira `/desentupidora-em-<slu
 - [ ] Confirmar tempo de chegada (hoje 30 min) e garantia
 - [ ] Confirmar a lista de serviços e o que a empresa **não** faz
 - [ ] Fotos reais dos serviços
-- [ ] IDs do Google Tag Manager / Google Ads em `src/data/site.ts`
