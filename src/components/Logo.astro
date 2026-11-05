@@ -1,0 +1,12 @@
+---
+// Logo provisório em texto (troque por src/assets/logo.png quando o cliente mandar o logo oficial).
+interface Props {
+  size?: 'md' | 'lg';
+}
+const { size = 'md' } = Astro.props;
+---
+
+<span class:list={['logo', `logo-${size}`]} aria-hidden="true">
+  <span class="logo-badge">SOS</span>
+  <span class="logo-text"><strong>BH</strong><small>Desentupidora</small></span>
+</span>

@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaButtons from '../../components/CtaButtons.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { site } from '../../data/site';
+import { servicos } from '../../data/servicos';
+import { breadcrumbSchema } from '../../data/schema';
+
+const crumbs = [
+  { name: 'Início', path: '/' },
+  { name: 'Serviços', path: '/servicos/' },
+];
+---
+
+<Base
+  title="Serviços de Desentupimento em BH 24h | SOS BH"
+  description="Todos os serviços da Desentupidora SOS BH em Belo Horizonte: desentupimento de esgoto, pia, vaso sanitário, ralo, caixa de gordura, coluna de prédio e caixa de passagem. Atendimento 24h."
+  schema={[breadcrumbSchema(crumbs)]}
+>
+  <section class="hero page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <span class="eyebrow">Serviços</span>
+      <h1>Serviços de desentupimento em BH</h1>
+      <p class="hero-lead">Desentupimento residencial, comercial e de condomínios, 24 horas, com chegada em até {site.arrivalMinutes} minutos e garantia.</p>
+      <CtaButtons />
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container">
+      <div class="services-grid">
+        {servicos.map((s) => <ServiceCard servico={s} />)}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>
