@@ -29,11 +29,11 @@ export const servicos: Servico[] = [
     nome: 'Desentupimento de Esgoto',
     keyword: 'Desentupimento de esgoto em BH',
     resumo: 'Rede de esgoto, manilha e tubulação até a rua desobstruídas, sem quebra-quebra sempre que possível.',
-    metaDescription: `Desentupimento de esgoto 24h em Belo Horizonte. Rede, manilha e tubulação entupida? Chegamos em até ${min} minutos, com garantia. Chame no WhatsApp.`,
+    metaDescription: `Desentupimento de esgoto 24h em BH e região. Rede, manilha e tubulação entupida? Chegamos em até ${min} minutos, com garantia. Chame no WhatsApp.`,
     icon: 'pipe',
     destaque: true,
     intro: [
-      'Esgoto voltando pelo ralo, mau cheiro forte ou vaso que enche e não desce são sinais de que a rede de esgoto do imóvel está entupida. A Desentupidora SOS BH atende 24 horas, inclusive fins de semana e feriados, em toda Belo Horizonte.',
+      'Esgoto voltando pelo ralo, mau cheiro forte ou vaso que enche e não desce são sinais de que a rede de esgoto do imóvel está entupida. A Desentupidora SOS BH atende 24 horas, inclusive fins de semana e feriados, em Belo Horizonte, Contagem, Betim e Nova Lima.',
       'Localizamos o ponto da obstrução e usamos o equipamento certo para cada tubulação, como máquinas de cabo rotativo, para desobstruir a rede sem quebrar piso nem parede sempre que possível.',
     ],
     sinais: [
@@ -60,7 +60,7 @@ export const servicos: Servico[] = [
       },
       {
         q: 'Atendem empresas e condomínios?',
-        a: 'Sim. Atendemos casas, apartamentos, condomínios, comércios e empresas em Belo Horizonte.',
+        a: 'Sim. Atendemos casas, apartamentos, condomínios, comércios e empresas em Belo Horizonte, Contagem, Betim e Nova Lima.',
       },
     ],
   },
@@ -136,19 +136,19 @@ export const servicos: Servico[] = [
   },
   {
     slug: 'desentupimento-de-ralo',
-    nome: 'Desentupimento de Ralo e Tanque',
-    keyword: 'Desentupimento de ralo e tanque em BH',
-    resumo: 'Ralo do box, da área de serviço e tanque entupidos ou com mau cheiro, resolvidos na hora.',
-    metaDescription: `Desentupimento de ralo do box, área de serviço e tanque 24h em BH. Água empoçando ou mau cheiro? Chegamos em até ${min} minutos, com garantia.`,
+    nome: 'Desentupimento de Ralo',
+    keyword: 'Desentupimento de ralo em BH',
+    resumo: 'Ralo do box, do banheiro e da área de serviço entupido ou com mau cheiro, resolvido na hora.',
+    metaDescription: `Desentupimento de ralo do box, banheiro e área de serviço 24h em BH. Água empoçando ou mau cheiro? Chegamos em até ${min} minutos, com garantia.`,
     icon: 'drain',
     intro: [
-      'Ralo do box acumulando água, ralo da área de serviço transbordando quando a máquina de lavar esvazia, tanque que não escoa: entupimentos de ralo são comuns e, se demorar, a água pode infiltrar e estragar pisos e paredes.',
-      'Limpamos a caixa sifonada e desobstruímos a tubulação dos ralos e do tanque até o esgoto, eliminando também o mau cheiro.',
+      'Ralo do box acumulando água, ralo da área de serviço transbordando quando a máquina de lavar esvazia, ralo do banheiro com mau cheiro: entupimentos de ralo são comuns e, se demorar, a água pode infiltrar e estragar pisos e paredes.',
+      'Limpamos a caixa sifonada e desobstruímos a tubulação dos ralos até o esgoto, eliminando também o mau cheiro.',
     ],
     sinais: [
       'Água empoçando no box durante o banho',
       'Ralo da área de serviço transbordando com a máquina de lavar',
-      'Tanque escoando devagar',
+      'Água escoando devagar pelo ralo do banheiro',
       'Mau cheiro ou insetos saindo do ralo',
     ],
     comoFazemos: [
@@ -199,70 +199,6 @@ export const servicos: Servico[] = [
       {
         q: 'Atendem restaurantes fora do horário de funcionamento?',
         a: 'Sim. Como atendemos 24 horas, dá para agendar o serviço antes da abertura ou depois do fechamento.',
-      },
-    ],
-  },
-  {
-    slug: 'desentupimento-de-coluna-de-predio',
-    nome: 'Desentupimento de Coluna de Prédio',
-    keyword: 'Desentupimento de coluna de esgoto de prédio em BH',
-    resumo: 'Coluna de esgoto entupida em prédios e condomínios, com retorno de esgoto nos andares de baixo.',
-    metaDescription: `Desentupimento de coluna de esgoto em prédios e condomínios de BH, 24 horas. Esgoto voltando nos apartamentos? Chegamos em até ${min} minutos.`,
-    icon: 'building',
-    intro: [
-      'Quando a coluna de esgoto de um prédio entope, o esgoto dos andares de cima começa a voltar pelos ralos, pias e vasos dos apartamentos de baixo. É uma emergência que afeta vários moradores ao mesmo tempo.',
-      'Atendemos síndicos, administradoras e moradores: localizamos o trecho entupido da coluna (prumada) e fazemos a desobstrução pelo ponto de acesso mais adequado.',
-    ],
-    sinais: [
-      'Esgoto voltando nos apartamentos dos andares mais baixos',
-      'Ralos e vasos borbulhando quando outros apartamentos usam a água',
-      'Mau cheiro de esgoto em áreas comuns ou no térreo',
-      'Vários apartamentos com escoamento lento ao mesmo tempo',
-    ],
-    comoFazemos: [
-      'Identificamos qual coluna e qual trecho estão obstruídos',
-      'Acessamos a tubulação pelo ponto mais adequado',
-      'Desobstruímos a coluna e testamos o escoamento',
-      'Orientamos o condomínio sobre prevenção',
-    ],
-    faq: [
-      {
-        q: 'Quem deve chamar a desentupidora: o morador ou o síndico?',
-        a: 'Quando o problema é na coluna, que é área comum, normalmente é o condomínio. Mas atendemos tanto o síndico quanto o morador que precisa de ajuda na hora.',
-      },
-      {
-        q: 'Atendem condomínios à noite e nos fins de semana?',
-        a: 'Sim. O atendimento é 24 horas, todos os dias.',
-      },
-    ],
-  },
-  {
-    slug: 'desentupimento-de-caixa-de-passagem',
-    nome: 'Caixa de Passagem e Inspeção',
-    keyword: 'Desentupimento de caixa de passagem em BH',
-    resumo: 'Caixa de passagem ou de inspeção cheia, transbordando ou com retorno de esgoto no quintal.',
-    metaDescription: `Desentupimento de caixa de passagem e caixa de inspeção 24h em Belo Horizonte. Esgoto transbordando no quintal? Chegamos em até ${min} minutos.`,
-    icon: 'box',
-    intro: [
-      'A caixa de passagem (ou de inspeção) junta o esgoto da casa antes de ele seguir para a rede da rua. Quando ela entope, o esgoto transborda no quintal ou na garagem e começa a voltar pelos ralos.',
-      'Limpamos a caixa e desobstruímos as tubulações que chegam e que saem dela, até a ligação com a rede pública.',
-    ],
-    sinais: [
-      'Esgoto transbordando pela tampa da caixa',
-      'Mau cheiro no quintal ou na garagem',
-      'Ralos de casa escoando devagar ao mesmo tempo',
-      'Caixa sempre cheia, mesmo sem uso de água',
-    ],
-    comoFazemos: [
-      'Abrimos a caixa e retiramos os resíduos acumulados',
-      'Desobstruímos as tubulações de entrada e saída',
-      'Testamos o escoamento até a rede da rua',
-      'Fechamos a caixa e deixamos o local limpo',
-    ],
-    faq: [
-      {
-        q: 'A caixa de passagem entupida pode ser problema na rua?',
-        a: 'Pode. Se a obstrução estiver na rede pública, depois da ligação do imóvel, a responsabilidade é da concessionária. No atendimento conseguimos identificar onde está o problema e orientar você.',
       },
     ],
   },

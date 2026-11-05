@@ -12,8 +12,6 @@ const alts: Record<string, string> = {
   'desentupimento-de-vaso-sanitario': 'Desentupimento de vaso sanitário em banheiro residencial',
   'desentupimento-de-ralo': 'Desentupimento de ralo e caixa sifonada',
   'limpeza-de-caixa-de-gordura': 'Limpeza de caixa de gordura',
-  'desentupimento-de-coluna-de-predio': 'Desentupimento de coluna de esgoto em prédio',
-  'desentupimento-de-caixa-de-passagem': 'Desentupimento de caixa de passagem de esgoto',
   // fotos/geral/: equipe, veículo (usada no topo da home e em "por que nós")
   equipe: 'Equipe da Desentupidora SOS BH',
 };

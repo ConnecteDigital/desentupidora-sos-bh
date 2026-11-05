@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CtaButtons from '../components/CtaButtons.astro';
 import CtaBand from '../components/CtaBand.astro';
-import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
-import { bairrosPorZona, bairroPath, noBairro, zonasPrioritarias } from '../data/bairros';
+import CityCard from '../components/CityCard.astro';
+import { cidades, nomesCidades } from '../data/cidades';
 import { breadcrumbSchema } from '../data/schema';
 
 const crumbs = [
@@ -15,40 +15,22 @@ const crumbs = [
 ---
 
 <Base
-  title="Áreas Atendidas: Desentupidora 24h em BH | SOS BH"
-  description={`Desentupidora 24 horas em todas as regionais de Belo Horizonte: Centro-Sul, Oeste, Pampulha, Noroeste, Leste, Nordeste, Venda Nova e Barreiro. Chegamos em até ${site.arrivalMinutes} minutos.`}
+  title="Áreas Atendidas: Desentupidora 24h em BH e Região | SOS BH"
+  description={`Desentupidora 24 horas em ${nomesCidades}. Chegamos em até ${site.arrivalMinutes} minutos, com garantia.`}
   schema={[breadcrumbSchema(crumbs)]}
 >
   <section class="hero page-hero">
     <div class="container">
       <Breadcrumbs items={crumbs} />
       <span class="eyebrow">Áreas atendidas</span>
-      <h1>Desentupidora em toda BH</h1>
-      <p class="hero-lead">Atendemos 24 horas em todas as regiões de Belo Horizonte. Encontre o seu bairro.</p>
+      <h1>Desentupidora em BH e região</h1>
+      <p class="hero-lead">Atendemos 24 horas em {nomesCidades}. Escolha a sua cidade.</p>
       <CtaButtons />
     </div>
   </section>
   <section class="section section-soft">
     <div class="container zones">
-      {
-        bairrosPorZona().map((g) => (
-          <div class:list={['zone', { 'is-priority': zonasPrioritarias.includes(g.zona) }]}>
-            <h2 style="font-size:1.6rem">
-              {g.zona}
-              {zonasPrioritarias.includes(g.zona) && <span class="tag">Foco</span>}
-            </h2>
-            <ul>
-              {g.bairros.map((b) => (
-                <li>
-                  <a href={bairroPath(b)}>
-                    <Icon name="pin" size={16} /> Desentupidora {noBairro(b)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
+      {cidades.map((c) => <CityCard cidade={c} heading="h2" />)}
     </div>
   </section>
   <CtaBand />

@@ -95,27 +95,10 @@ p { margin: 0 0 1em; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(125, 255, 178, 0); } 100% { box-shadow: 0 0 0 0 rgba(125, 255, 178, 0); } }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 0; }
 .header-inner { padding: 6px 0; }
-/* logo provisório em texto */
-.brand { text-decoration: none; color: #fff; display: inline-flex; padding: 6px 0; }
-.logo { display: inline-flex; align-items: center; gap: 10px; color: #fff; line-height: 1; }
-.logo-badge {
-  display: grid; place-items: center; width: 54px; height: 54px; border-radius: 14px;
-  background: linear-gradient(135deg, var(--blue-500), var(--blue-600)); color: #fff;
-  font: 800 1.45rem/1 var(--font-display); letter-spacing: .02em;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .18);
-}
-.logo-text { display: flex; flex-direction: column; gap: 3px; }
-.logo-text strong { font: 800 1.7rem/0.9 var(--font-display); letter-spacing: .02em; }
-.logo-text small { font: 700 .8rem/1 var(--font-display); letter-spacing: .14em; text-transform: uppercase; color: var(--cyan-300); }
-.logo-lg .logo-badge { width: 64px; height: 64px; font-size: 1.7rem; }
-.logo-lg .logo-text strong { font-size: 2rem; }
-.logo-lg .logo-text small { font-size: .9rem; }
-.footer-logo { margin: 0 0 14px; }
-@media (max-width: 480px) {
-  .logo-badge { width: 44px; height: 44px; font-size: 1.2rem; border-radius: 12px; }
-  .logo-text strong { font-size: 1.4rem; }
-  .logo-text small { font-size: .68rem; }
-}
+/* logo (selo redondo) */
+.brand { display: inline-flex; padding: 4px 0; }
+.brand img { width: 100px; height: auto; }
+@media (max-width: 480px) { .brand img { width: 68px; } }
 .nav-desktop { display: flex; gap: 28px; }
 .nav-desktop a { color: #dbe6fb; text-decoration: none; font-weight: 600; }
 .nav-desktop a:hover { color: #fff; }
@@ -427,3 +410,15 @@ body:has(.nav-mobile[open]) .float-cta { display: none; }
     font-size: .8rem; line-height: 1.2; text-align: center;
   }
 }
+
+/* cards de cidade */
+.city-card { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--ink); transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.city-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--blue-400); }
+.city-card h2, .city-card h3 { display: flex; align-items: center; gap: 8px; font-size: 1.7rem; margin: 0 0 4px; }
+.city-card h2 svg, .city-card h3 svg { color: var(--blue-500); flex: none; }
+.city-card p { color: var(--ink-soft); font-size: .95rem; margin: 0; flex: 1; }
+.city-card .service-more { margin-top: 10px; }
+.submenu-areas { width: 320px; }
+.prose ul.tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.prose ul.tags-list li { padding: 6px 14px; margin: 0; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line); font-size: .95rem; }
+.prose ul.tags-list li::before { display: none; }

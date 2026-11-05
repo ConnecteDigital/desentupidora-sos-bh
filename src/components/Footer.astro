@@ -1,9 +1,10 @@
 ---
-import Logo from './Logo.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import Icon from './Icon.astro';
 import { site, whatsappUrl } from '../data/site';
 import { servicos } from '../data/servicos';
-import { bairros, bairroPath, noBairro } from '../data/bairros';
+import { cidades, cidadePath, nomesCidades } from '../data/cidades';
 
 const year = new Date().getFullYear();
 ---
@@ -11,8 +12,8 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <div class="footer-logo" role="img" aria-label={site.name}><Logo size="lg" /></div>
-      <p>Desentupidora 24 horas em Belo Horizonte. Atendimento emergencial com garantia e chegada em até {site.arrivalMinutes} minutos.</p>
+      <Image src={logo} alt={site.name} width={140} densities={[1, 2]} />
+      <p>Desentupidora 24 horas em {nomesCidades}. Atendimento emergencial com garantia e chegada em até {site.arrivalMinutes} minutos.</p>
       <ul class="footer-contact">
         <li><a href={whatsappUrl()} target="_blank" rel="noopener"><Icon name="whatsapp" size={18} /> WhatsApp</a></li>
         <li><a href={site.tel}><Icon name="phone" size={18} /> {site.phoneDisplay}</a></li>
@@ -26,9 +27,9 @@ const year = new Date().getFullYear();
       </ul>
     </div>
     <div>
-      <h2 class="footer-title">Desentupidora por bairro</h2>
+      <h2 class="footer-title">Cidades atendidas</h2>
       <ul class="footer-links">
-        {bairros.map((b) => <li><a href={bairroPath(b)}>Desentupidora {noBairro(b)}</a></li>)}
+        {cidades.map((c) => <li><a href={cidadePath(c)}>Desentupidora em {c.nome}</a></li>)}
       </ul>
       <h2 class="footer-title">Conteúdo</h2>
       <ul class="footer-links">

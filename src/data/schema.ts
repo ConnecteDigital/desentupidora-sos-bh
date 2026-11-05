@@ -1,5 +1,5 @@
 import { site } from './site';
-import { bairros } from './bairros';
+import { cidades } from './cidades';
 import type { Faq, Servico } from './servicos';
 
 const businessId = `${site.url}/#empresa`;
@@ -25,8 +25,7 @@ export function localBusinessSchema() {
       addressCountry: 'BR',
     },
     areaServed: [
-      { '@type': 'City', name: 'Belo Horizonte' },
-      ...bairros.map((b) => ({ '@type': 'Place', name: `${b.nome}, Belo Horizonte - MG` })),
+      ...cidades.map((c) => ({ '@type': 'City', name: `${c.nome} - MG` })),
     ],
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',

@@ -1,8 +1,7 @@
 // Dados centrais da empresa. Altere aqui e o site inteiro é atualizado.
 
 // Formato: 55 + DDD + número, só dígitos
-// PROVISÓRIO: trocar pelo WhatsApp/telefone real da SOS BH antes de publicar
-const PHONE_DIGITS = '5531900000000';
+const PHONE_DIGITS = '5531999221810';
 
 export const site = {
   name: 'Desentupidora SOS BH',
@@ -12,13 +11,13 @@ export const site = {
   city: 'Belo Horizonte',
   state: 'MG',
   phoneDigits: PHONE_DIGITS,
-  // Exibição: (31) 90000-0000
-  phoneDisplay: `(${PHONE_DIGITS.slice(2, 4)}) ${PHONE_DIGITS.slice(4, 9)}-${PHONE_DIGITS.slice(9)}`,
+  // Exibição com o 0 na frente, como o cliente pediu: 0 31 99922-1810
+  phoneDisplay: `0 ${PHONE_DIGITS.slice(2, 4)} ${PHONE_DIGITS.slice(4, 9)}-${PHONE_DIGITS.slice(9)}`,
   tel: `tel:+${PHONE_DIGITS}`,
   // PROVISÓRIO: confirmar com o cliente o tempo real de chegada
   arrivalMinutes: 30,
   description:
-    'Desentupidora 24 horas em Belo Horizonte. Desentupimento de esgoto, pia, vaso sanitário, ralo, caixa de gordura e coluna de prédio. Chegamos em até 30 minutos, com garantia.',
+    'Desentupidora 24 horas em Belo Horizonte, Contagem, Betim e Nova Lima. Desentupimento de esgoto, pia, vaso sanitário, ralo e caixa de gordura. Chegamos em até 30 minutos, com garantia.',
 };
 
 export const DEFAULT_WHATSAPP_MESSAGE =

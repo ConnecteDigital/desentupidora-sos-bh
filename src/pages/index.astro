@@ -10,14 +10,15 @@ import { Image } from 'astro:assets';
 import { fotoDoServico, temFotos } from '../data/fotos';
 import { site } from '../data/site';
 import { servicos } from '../data/servicos';
-import { bairrosPorZona, bairroPath, noBairro, zonasPrioritarias } from '../data/bairros';
+import CityCard from '../components/CityCard.astro';
+import { cidades, nomesCidades } from '../data/cidades';
 import { faqSchema } from '../data/schema';
 import { getCollection } from 'astro:content';
 
 const faq = [
   {
     q: 'O atendimento é 24 horas mesmo?',
-    a: 'Sim. Atendemos 24 horas por dia, 7 dias por semana, incluindo fins de semana e feriados, em toda Belo Horizonte.',
+    a: `Sim. Atendemos 24 horas por dia, 7 dias por semana, incluindo fins de semana e feriados, em ${nomesCidades}.`,
   },
   {
     q: 'Em quanto tempo a equipe chega?',
@@ -65,7 +66,7 @@ const posts = (await getCollection('blog'))
       )
     }
     <div class="container hero-center">
-      <span class="eyebrow">Desentupidora em Belo Horizonte · Plantão 24h</span>
+      <span class="eyebrow">BH · Contagem · Betim · Nova Lima · Plantão 24h</span>
       <h1>Desentupidora 24 horas em BH: <em>chegamos em até {site.arrivalMinutes} minutos</em></h1>
       <p class="hero-lead">Esgoto, pia, vaso ou ralo entupido? Resolvemos hoje, a qualquer hora, com garantia.</p>
       <CtaButtons />
@@ -82,7 +83,7 @@ const posts = (await getCollection('blog'))
       <div class="trust-item"><Icon name="clock" size={34} /><div><strong>24 horas</strong><span>Todos os dias, inclusive feriados</span></div></div>
       <div class="trust-item"><Icon name="bolt" size={34} /><div><strong>{site.arrivalMinutes} minutos</strong><span>Tempo de chegada</span></div></div>
       <div class="trust-item"><Icon name="shield" size={34} /><div><strong>Garantia</strong><span>Em todos os serviços</span></div></div>
-      <div class="trust-item"><Icon name="pin" size={34} /><div><strong>BH inteira</strong><span>Todas as regiões da cidade</span></div></div>
+      <div class="trust-item"><Icon name="pin" size={34} /><div><strong>BH e região</strong><span>Contagem, Betim e Nova Lima</span></div></div>
     </div>
   </section>
 
@@ -91,7 +92,7 @@ const posts = (await getCollection('blog'))
       <div class="section-head">
         <span class="eyebrow">Nossos serviços</span>
         <h2>Serviços de desentupimento em BH</h2>
-        <p>Da pia da cozinha à coluna de esgoto do prédio, desentupimos casas, apartamentos, condomínios e empresas.</p>
+        <p>Da pia da cozinha à rede de esgoto, desentupimos casas, apartamentos, condomínios e empresas.</p>
       </div>
       <div class="services-grid">
         {servicos.map((s) => <ServiceCard servico={s} />)}
@@ -136,7 +137,7 @@ const posts = (await getCollection('blog'))
       <div class="section-head">
         <span class="eyebrow">Por que a {site.name}</span>
         <h2>Desentupidora de confiança, a qualquer hora</h2>
-        <p>Equipe equipada para resolver desde uma pia entupida até o desentupimento de uma coluna de esgoto de prédio.</p>
+        <p>Equipe equipada para resolver desde uma pia entupida até o desentupimento da rede de esgoto e da caixa de gordura.</p>
       </div>
       <div class="features">
         <div class="feature">
@@ -169,7 +170,7 @@ const posts = (await getCollection('blog'))
       <div class="section-head">
         <span class="eyebrow">Trabalhos realizados</span>
         <h2>Serviços que já fizemos</h2>
-        <p>Fotos reais de atendimentos da {site.name} em Belo Horizonte.</p>
+        <p>Fotos reais de atendimentos da {site.name} em BH e região.</p>
       </div>
       <Gallery limit={8} exclude="desentupimento-de-esgoto" />
     </div>
@@ -182,28 +183,10 @@ const posts = (await getCollection('blog'))
       <div class="section-head">
         <span class="eyebrow">Áreas atendidas</span>
         <h2>Desentupidora perto de você</h2>
-        <p>Atendemos todas as regiões de Belo Horizonte, 24 horas por dia.</p>
+        <p>Atendemos {nomesCidades}, 24 horas por dia.</p>
       </div>
       <div class="zones">
-        {
-          bairrosPorZona().map((g) => (
-            <div class:list={['zone', { 'is-priority': zonasPrioritarias.includes(g.zona) }]}>
-              <h3>
-                {g.zona}
-                {zonasPrioritarias.includes(g.zona) && <span class="tag">Foco</span>}
-              </h3>
-              <ul>
-                {g.bairros.map((b) => (
-                  <li>
-                    <a href={bairroPath(b)}>
-                      <Icon name="pin" size={16} /> Desentupidora {noBairro(b)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+        {cidades.map((c) => <CityCard cidade={c} />)}
       </div>
     </div>
   </section>

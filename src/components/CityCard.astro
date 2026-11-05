@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+import { cidadePath, type Cidade } from '../data/cidades';
+
+interface Props {
+  cidade: Cidade;
+  heading?: 'h2' | 'h3';
+}
+
+const { cidade, heading: H = 'h3' } = Astro.props;
+---
+
+<a class="zone city-card" href={cidadePath(cidade)}>
+  <H><Icon name="pin" size={22} /> {cidade.nome}</H>
+  <p>{cidade.bairros.slice(0, 5).join(', ')} e mais</p>
+  <span class="service-more">Desentupidora em {cidade.nome} <Icon name="arrow" size={16} /></span>
+</a>

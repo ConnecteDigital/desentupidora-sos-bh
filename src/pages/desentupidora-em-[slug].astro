@@ -7,60 +7,59 @@ import FaqList from '../components/FaqList.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { site } from '../data/site';
 import { servicos } from '../data/servicos';
-import { bairros, bairroPath, noBairro, nomeRegiao, type Bairro } from '../data/bairros';
-import { breadcrumbSchema, faqSchema } from '../data/schema';
+import { cidades, cidadePath, type Cidade } from '../data/cidades';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '../data/schema';
 
 export function getStaticPaths() {
-  return bairros.map((bairro) => ({ params: { slug: bairro.slug }, props: { bairro } }));
+  return cidades.map((cidade) => ({ params: { slug: cidade.slug }, props: { cidade } }));
 }
 
 interface Props {
-  bairro: Bairro;
+  cidade: Cidade;
 }
 
-const { bairro } = Astro.props;
-const path = bairroPath(bairro);
-const noB = noBairro(bairro);
-const regiao = nomeRegiao(bairro.zona);
+const { cidade } = Astro.props;
+const path = cidadePath(cidade);
 const crumbs = [
   { name: 'Início', path: '/' },
   { name: 'Áreas atendidas', path: '/areas-atendidas/' },
-  { name: `Desentupidora ${noB}`, path },
+  { name: `Desentupidora em ${cidade.nome}`, path },
 ];
 const faq = [
   {
-    q: `Vocês atendem ${noB} 24 horas?`,
-    a: `Sim. Atendemos ${noB} e nos bairros próximos 24 horas por dia, inclusive fins de semana e feriados.`,
+    q: `Vocês atendem em ${cidade.nome} 24 horas?`,
+    a: `Sim. Atendemos ${cidade.nome} 24 horas por dia, inclusive fins de semana e feriados.`,
   },
   {
-    q: `Em quanto tempo a desentupidora chega ${noB}?`,
-    a: `Chegamos em até ${site.arrivalMinutes} minutos ${noB}.`,
+    q: `Em quanto tempo a desentupidora chega em ${cidade.nome}?`,
+    a: `Chegamos em até ${site.arrivalMinutes} minutos em ${cidade.nome}.`,
   },
   {
-    q: `Atendem também ${bairro.vizinhos.slice(0, 2).join(' e ')}?`,
-    a: `Sim. Além de ${bairro.nome}, atendemos ${bairro.vizinhos.join(', ')} e toda a ${regiao} de Belo Horizonte.`,
+    q: `Atendem bairros como ${cidade.bairros.slice(0, 2).join(' e ')}?`,
+    a: `Sim. Atendemos ${cidade.bairros.join(', ')} e os demais bairros de ${cidade.nome}.`,
   },
   {
     q: 'O serviço tem garantia?',
     a: `Sim. Todos os serviços da ${site.name} têm garantia.`,
   },
 ];
-const outrosBairros = bairros.filter((b) => b.slug !== bairro.slug);
-const msg = `Olá! Vim pelo site da ${site.name} e preciso de um desentupimento ${noB}.`;
+const outrasCidades = cidades.filter((c) => c.slug !== cidade.slug);
+const msg = `Olá! Vim pelo site da ${site.name} e preciso de um desentupimento em ${cidade.nome}.`;
+const servicoSchema = { ...serviceSchema(servicos[0], cidade.nome), name: `Desentupidora em ${cidade.nome}`, serviceType: 'Desentupimento' };
 ---
 
 <Base
-  title={`Desentupidora ${noB} 24h | Chegamos em ${site.arrivalMinutes} min | SOS BH`}
-  description={`Desentupidora ${noB}, ${regiao} de BH. Desentupimento de esgoto, pia, vaso, ralo e caixa de gordura 24 horas. Chegamos em até ${site.arrivalMinutes} minutos, com garantia.`}
-  schema={[faqSchema(faq), breadcrumbSchema(crumbs)]}
+  title={`Desentupidora em ${cidade.nome} 24h | Chegamos em ${site.arrivalMinutes} min | SOS BH`}
+  description={`Desentupidora em ${cidade.nome}, MG. Desentupimento de esgoto, pia, vaso sanitário, ralo e caixa de gordura 24 horas. Chegamos em até ${site.arrivalMinutes} minutos, com garantia.`}
+  schema={[servicoSchema, faqSchema(faq), breadcrumbSchema(crumbs)]}
 >
   <section class="hero page-hero">
     <div class="container">
       <Breadcrumbs items={crumbs} />
-      <span class="eyebrow">Regional {bairro.zona} · Belo Horizonte</span>
-      <h1>Desentupidora {noB} 24 horas</h1>
+      <span class="eyebrow">{cidade.nome} · MG · Plantão 24h</span>
+      <h1>Desentupidora em {cidade.nome} 24 horas</h1>
       <p class="hero-lead">
-        Precisa de desentupidora {noB}? A {site.name} atende 24 horas e chega em até {site.arrivalMinutes} minutos
+        Precisa de desentupidora em {cidade.nome}? A {site.name} atende 24 horas e chega em até {site.arrivalMinutes} minutos
         para desentupir esgoto, pia, vaso sanitário, ralo e caixa de gordura, com garantia.
       </p>
       <CtaButtons message={msg} />
@@ -70,16 +69,18 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de um desentupimento 
   <section class="section">
     <div class="container content-grid">
       <article class="prose">
-        <h2>Desentupidora 24h {noB}</h2>
-        <p>{bairro.sobre}</p>
-        <p>
-          Nossa equipe atende toda a {regiao} e consegue chegar rápido {noB} e nos bairros próximos, como
-          {' '}{bairro.vizinhos.join(', ')}. Assim que você chama, a equipe já sai para o endereço.
-        </p>
+        <h2>Desentupidora 24h em {cidade.nome}</h2>
+        {cidade.sobre.map((p) => <p>{p}</p>)}
 
-        <h2>O que fazemos {noB}</h2>
+        <h2>O que fazemos em {cidade.nome}</h2>
         <ul>
           {servicos.map((s) => <li><a href={`/servicos/${s.slug}/`}>{s.nome}</a></li>)}
+        </ul>
+
+        <h2>Bairros atendidos em {cidade.nome}</h2>
+        <p>Atendemos todos os bairros de {cidade.nome}, entre eles:</p>
+        <ul class="tags-list">
+          {cidade.bairros.map((b) => <li>{b}</li>)}
         </ul>
 
         <h2>Perguntas frequentes</h2>
@@ -88,14 +89,14 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de um desentupimento 
 
       <aside class="sidebar">
         <div class="side-card">
-          <h2>Desentupidora {noB} agora</h2>
+          <h2>Desentupidora em {cidade.nome} agora</h2>
           <p>Fale com a gente e receba atendimento em até {site.arrivalMinutes} minutos.</p>
           <CtaButtons message={msg} size="md" />
         </div>
         <div class="side-list">
-          <h2>Outros bairros</h2>
+          <h2>Outras cidades</h2>
           <ul>
-            {outrosBairros.map((b) => <li><a href={bairroPath(b)}>Desentupidora {noBairro(b)}</a></li>)}
+            {outrasCidades.map((c) => <li><a href={cidadePath(c)}>Desentupidora em {c.nome}</a></li>)}
           </ul>
         </div>
       </aside>
@@ -105,8 +106,8 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de um desentupimento 
   <section class="section section-soft">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Serviços {noB}</span>
-        <h2>Serviços de desentupimento {noB}</h2>
+        <span class="eyebrow">Serviços em {cidade.nome}</span>
+        <h2>Serviços de desentupimento em {cidade.nome}</h2>
       </div>
       <div class="services-grid">
         {servicos.map((s) => <ServiceCard servico={s} />)}
@@ -114,5 +115,5 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de um desentupimento 
     </div>
   </section>
 
-  <CtaBand title={`Desentupidora ${noB} agora`} message={msg} />
+  <CtaBand title={`Desentupidora em ${cidade.nome} agora`} message={msg} />
 </Base>

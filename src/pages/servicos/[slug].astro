@@ -10,7 +10,7 @@ import { Image } from 'astro:assets';
 import { fotoDoServico, temFotos } from '../../data/fotos';
 import { site } from '../../data/site';
 import { servicos, type Servico } from '../../data/servicos';
-import { bairros, bairroPath } from '../../data/bairros';
+import { cidades, cidadePath, nomesCidades } from '../../data/cidades';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '../../data/schema';
 
 export function getStaticPaths() {
@@ -31,7 +31,7 @@ const faq = [
   ...servico.faq,
   {
     q: `Quanto tempo demora para a equipe chegar para ${servico.nome.toLowerCase()}?`,
-    a: `Atendemos 24 horas e chegamos em até ${site.arrivalMinutes} minutos nas regiões atendidas de Belo Horizonte.`,
+    a: `Atendemos 24 horas e chegamos em até ${site.arrivalMinutes} minutos em ${nomesCidades}.`,
   },
 ];
 const foto = fotoDoServico(servico.slug);
@@ -47,7 +47,7 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de ${servico.nome.toL
   <section class="hero page-hero">
     <div class="container">
       <Breadcrumbs items={crumbs} />
-      <span class="eyebrow">Serviço 24 horas em Belo Horizonte</span>
+      <span class="eyebrow">Serviço 24 horas em BH e região</span>
       <h1>{servico.keyword}</h1>
       <p class="hero-lead">{servico.resumo} Atendimento 24h, chegada em até {site.arrivalMinutes} minutos e garantia no serviço.</p>
       <CtaButtons message={msg} />
@@ -63,7 +63,7 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de ${servico.nome.toL
           foto && (
             <figure class="service-figure">
               <Image src={foto.src} alt={foto.alt} widths={[480, 800, 1100]} sizes="(max-width: 960px) 100vw, 760px" />
-              <figcaption>{servico.nome}: serviço realizado pela {site.name} em Belo Horizonte.</figcaption>
+              <figcaption>{servico.nome}: serviço realizado pela {site.name}.</figcaption>
             </figure>
           )
         }
@@ -85,12 +85,12 @@ const msg = `Olá! Vim pelo site da ${site.name} e preciso de ${servico.nome.toL
         <h2>Perguntas frequentes</h2>
         <FaqList items={faq} />
 
-        <h2>{servico.nome} por bairro</h2>
+        <h2>{servico.nome} por cidade</h2>
         <p>
-          Atendemos {servico.nome.toLowerCase()} em toda Belo Horizonte, incluindo:
-          {bairros.map((b, i) => (
+          Atendemos {servico.nome.toLowerCase()} em:
+          {cidades.map((c, i) => (
             <>
-              <a href={bairroPath(b)}>{b.nome}</a>{i < bairros.length - 1 ? ', ' : '.'}
+              <a href={cidadePath(c)}>{c.nome}</a>{i < cidades.length - 2 ? ', ' : i === cidades.length - 2 ? ' e ' : '.'}
             </>
           ))}
         </p>
